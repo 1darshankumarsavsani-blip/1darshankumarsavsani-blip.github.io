@@ -1,64 +1,91 @@
 # DESIGN.md — Darshankumar Savsani portfolio
 
-Design language inspired by the layout and typography feel of ingeniousmindslab.com (big confident headlines, soft backgrounds, rounded cards, pill buttons, mono labels).
-Only the *style approach* is borrowed. All text, images, colours and code are original to this site.
+Design system applied to https://1darshankumarsavsani-blip.github.io/, following the token spec Darshankumar supplied
+(Ingenious Minds Lab style: Sora + DM Sans + DM Mono, coral accent, soft surfaces, animated hero).
+Only the style tokens are used. All text, photos and code on the site are original.
 
-## 1. Principles
-1. One big idea per screen. Huge headline first, one line of support, two buttons.
-2. Soft and airy. White (or deep plum in dark mode), faint colour glow, lots of space.
-3. Rounded everywhere. Cards 20px, hero card 26px, buttons fully pill-shaped.
-4. One accent colour, used sparingly. Maroon for brand, gold for small highlights.
-5. Bilingual by default. Every visible text has English and Gujarati versions.
-6. Honest content. Apps not yet run on a real device say so.
+## Overview
+- **Product:** Darshankumar Savsani portfolio (DARSHAN CORPORATION)
+- **Surface type:** marketing / personal portfolio
+- **Audience:** recruiters, teachers, people who want his apps
+- **Brand character:** confident, friendly, bilingual (English + Gujarati)
 
-## 2. Colour tokens (light / dark)
-| Token | Light | Dark | Use |
+### Design principles
+- Consistency over novelty — reuse patterns before inventing new ones.
+- Token-driven — every visual decision references a token below.
+- Accessible by default — visible focus, readable contrast, reduced-motion support.
+
+## Colors
+| Token | Light | Dark | Role |
 |---|---|---|---|
-| --bg | #FFFFFF | #120A10 | page |
-| --bg2 | #FFF6F2 | #1A0F16 | hero glow |
-| --ink | #1E1826 | #F6ECEE | text |
-| --mut | #6A6275 | #B7A8B3 | secondary text |
-| --line | #EEE7EC | #2D1D26 | borders |
-| --card | #FFFFFF | #1D1119 | cards |
-| --ac | #7B1E3A (maroon) | #FF6B8B | buttons, links, numbers |
-| --ac2 | #C0392B | #F7B500 | gradient end |
-| --gold | #F7B500 | #F7B500 | version badges, CTA button |
-| --soft | #FBEEF0 | #2A1620 | icon tiles |
+| --surface | #F6F5F7 | #150F1B | page |
+| --bg / --card | #FFFFFF | #1A1322 | cards |
+| --ink | #1E1826 | #F1ECF7 | primary text |
+| --mut | #5C5468 | #9A939F | secondary text |
+| --line | #E5E7EB | #2A2233 | borders |
+| --ac | #FF5A5F | #FF5A5F | main accent (buttons, numbers, links) |
+| --ac2 | #FD6347 | #FD6347 | gradient end, tags |
+| --blue | #0F90FF | #0F90FF | accent, focus ring, tags |
+| --teal | #00E2E2 | #00E2E2 | accent on dark panels, dots |
+| --soft | #FFEDEE | #2C1A22 | icon tiles |
 
-## 3. Typography
-- Headings: **Sora** 800, tight tracking (-0.02em), line-height 1.08, size clamp(40px, 6.4vw, 72px) for the hero.
-- Accent line in headings: **Instrument Serif** italic ("on every screen you own.").
-- Body: **DM Sans** 400/500/700, 15–19px.
-- Labels: **JetBrains Mono** 11px, uppercase, wide tracking (.14em), with a small dot before it.
-- Gujarati: **Noto Sans Gujarati** (fallback for all of the above).
-- The hero's second line is a maroon to red gradient text.
+## Typography
+**Font stack:** Sora (headings), DM Sans (body), DM Mono (labels), Instrument Serif italic (accent line), Noto Sans Gujarati (fallback).
+| Level | Size | Usage |
+|---|---|---|
+| hero | clamp(42px, 7vw, 80px) / 800 | main headline |
+| h2 | clamp(32px, 4.8vw, 54px) / 800 | section headings |
+| h3 | 20px | card titles |
+| body | 15–19px | text |
+| label | 12–13px DM Mono | eyebrows, chips, tags |
+Weights: 400, 500, 700, 800. Sentence case everywhere, no ALL CAPS body text.
 
-## 4. Layout
-- Container 1140px, 22px side padding. Sections 78px top/bottom, separated by a 1px line.
-- Hero: 2 columns (text 1.1fr, photo card 0.9fr), one column under 860px.
-- Card grids: `repeat(auto-fit, minmax(250px, 1fr))`, 16px gap.
-- Sticky header, 68px high, blurred translucent background.
+## Spacing
+Base unit 4px. Used: 4, 6, 8, 10, 12, 16, 20, 24, 40, 64, 84.
 
-## 5. Components
-- **Header**: logo tile (gradient "DS") + wordmark, links, language toggle, theme toggle, Contact pill.
-- **Eyebrow**: mono label with dot. Introduces every section.
-- **Chips**: small mono rounded-8px labels (Est. 2024, Diploma CE).
-- **Pill buttons**: primary (maroon, soft shadow, lifts 2px on hover) and outline.
-- **Hero card**: photo on a soft gradient, floating tag top-left, three mini stats below.
-- **Cards**: 1px border, 20px radius, soft shadow, lift 4px on hover. Icon tile, title, text, tags, link.
-- **Version badge**: gold mono badge (v2.0).
-- **CTA block**: maroon gradient panel, serif gold accent, gold primary button.
+## Shapes
+radius: 12px (small tiles), 16px, 20.6px (cards), 21.6px (hero card, CTA), 9999px (pills, chips).
 
-## 6. Behaviour
-- Theme: follows the device, toggle remembers the choice.
-- Language: Gujarati phones open in Gujarati, the toggle remembers the choice.
-- No frameworks, a single `index.html` plus two images. Fonts load from Google Fonts.
+## Elevation
+- ring: `0 0 0 1px rgba(255,90,95,.12)`
+- hero card: `0 28px 70px -32px rgba(255,90,95,.35)`
+- card: `inset 0 1px 0 rgba(255,255,255,.95), 0 0 0 1px rgba(120,110,100,.14)` + `0 14px 48px -32px rgba(42,34,51,.14)`
+- hover: coral ring + `0 10px 28px -18px rgba(255,90,95,.45)`
+- glow on logo and primary button: `0 0 12px rgba(255,90,95,.4)`
 
-## 7. Content rules
-- No phone number and no resume PDF on the public page.
-- Keep claims you can prove: macOS and iPhone apps were built and tested on GitHub's servers only.
+## Motion
+- fast 0.15s, base 0.3s, slow 0.45–0.5s, all `cubic-bezier(.4,0,.2,1)`.
+- Hero accent shimmer: 4s linear infinite.
+- Background aura: 8s ease-in-out infinite.
+- Scroll hint: 2.2s ease-in-out infinite.
+- Skills marquee: 48s linear infinite.
+- Nav button gentle shake: 4.2s ease-in-out infinite.
+- `prefers-reduced-motion` turns all of it off.
 
-## 8. How to change things
-- Brand colour: edit `--ac` / `--ac2` at the top of the style block.
-- New project card: copy one `.card` in the Work section.
-- Add a language string: wrap it as `<span data-e>English</span><span data-g>ગુજરાતી</span>`.
+## Components
+Header (sticky, blurred), pill buttons (primary / outline), eyebrow label, chips, hero card with floating tag and 3 stats, scroll hint, skills marquee, project cards, feature cards, stats cards, CTA panel, footer.
+States for every interactive part: default, hover (lift), focus-visible (3px blue ring), active (scale .97).
+
+## Do
+- Reference tokens by name, not raw values.
+- Use the spacing and radius scale only.
+- Keep content in sentence case.
+- Test at phone width and desktop width.
+- Keep both languages in sync: `<span data-e>English</span><span data-g>ગુજરાતી</span>`.
+
+## Don't
+- Don't add colours outside the palette.
+- Don't mix other border radii.
+- Don't nest buttons inside links.
+- Don't put his phone number or resume PDF on the public page.
+- Don't claim apps were tested on devices they were not (macOS and iPhone apps ran only on GitHub's build servers).
+
+## Writing tone
+Concise, confident, friendly. Short sentences.
+
+## Definition of done (for a new section or card)
+- Uses only tokens above.
+- Hover, focus-visible and active states work.
+- Works at 390px and 1200px width, light and dark.
+- English and Gujarati text both present.
+- Reduced-motion respected.
