@@ -6,56 +6,76 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@500&family=Noto+Sans+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--bg2:#fff6f2;--ink:#1e1826;--mut:#6a6275;--line:#eee7ec;--card:#fff;--ac:#7B1E3A;--ac2:#C0392B;--gold:#F7B500;--soft:#fbeef0;--shadow:0 10px 40px rgba(123,30,58,.08)}
-html[data-t=dark]{--bg:#120a10;--bg2:#1a0f16;--ink:#f6ecee;--mut:#b7a8b3;--line:#2d1d26;--card:#1d1119;--ac:#ff6b8b;--ac2:#F7B500;--gold:#F7B500;--soft:#2a1620;--shadow:0 10px 40px rgba(0,0,0,.4)}
+:root{--surface:#F6F5F7;--bg:#FFFFFF;--ink:#1E1826;--mut:#5C5468;--line:#E5E7EB;--card:#FFFFFF;--ac:#FF5A5F;--ac2:#FD6347;--blue:#0F90FF;--teal:#00E2E2;--soft:#FFEDEE;
+--sh1:0 0 0 1px rgba(255,90,95,.12);--sh2:0 28px 70px -32px rgba(255,90,95,.35);--sh3:0 14px 48px -32px rgba(42,34,51,.14);--sh-in:inset 0 1px 0 rgba(255,255,255,.95),0 0 0 1px rgba(120,110,100,.14);
+--r1:12px;--r2:16px;--r3:20.6px;--r4:21.6px;--ease:cubic-bezier(.4,0,.2,1)}
+html[data-t=dark]{--surface:#150F1B;--bg:#0F0A14;--ink:#F1ECF7;--mut:#9A939F;--line:#2A2233;--card:#1A1322;--soft:#2C1A22;--sh3:0 14px 48px -32px rgba(0,0,0,.7)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:"DM Sans","Noto Sans Gujarati",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:Sora,"Noto Sans Gujarati",sans-serif;letter-spacing:-.02em;line-height:1.08;margin:0}
+body{margin:0;font-family:"DM Sans","Noto Sans Gujarati",system-ui,sans-serif;background:var(--surface);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s var(--ease),color .3s var(--ease)}
+h1,h2,h3{font-family:Sora,"Noto Sans Gujarati",sans-serif;letter-spacing:-.025em;line-height:1.06;margin:0}
 .serif{font-family:"Instrument Serif","Noto Sans Gujarati",serif;font-style:italic;font-weight:400;letter-spacing:0}
-a{color:inherit}.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
-.bgglow{position:absolute;inset:0 0 auto 0;height:900px;background:radial-gradient(60% 50% at 20% 10%,var(--bg2),transparent 70%),radial-gradient(40% 40% at 90% 20%,var(--soft),transparent 70%);z-index:-1}
-header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;gap:22px;height:68px}
-.logo{display:flex;align-items:center;gap:10px;font-family:Sora;font-weight:800;text-decoration:none;font-size:15px;line-height:1.05;letter-spacing:.02em}
-.logo i{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;display:grid;place-items:center;font-style:normal;font-size:15px}
-.nav nav{display:flex;gap:22px;margin-left:18px}.nav nav a{text-decoration:none;font-size:14.5px;font-weight:500;color:var(--mut)}.nav nav a:hover{color:var(--ink)}
-.sp{flex:1}body{overflow-x:hidden}.ic{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;height:38px;padding:0 14px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
-.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid transparent;transition:.2s}
-.pill.p{background:var(--ac);color:#fff;box-shadow:0 8px 24px color-mix(in srgb,var(--ac) 35%,transparent)}.pill.p:hover{transform:translateY(-2px)}
-.pill.o{background:var(--card);border-color:var(--line);color:var(--ink)}
-.eyebrow{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);display:inline-flex;align-items:center;gap:8px}
-.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ac)}
-.hero{padding:70px 0 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:800}.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lead{font-size:19px;color:var(--mut);max-width:520px;margin:22px 0}.hero p.lead b{color:var(--ac)}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}.chip{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 10px;color:var(--ink)}
-.chip:before{content:"● ";color:var(--ac);font-size:8px;vertical-align:2px}
+a{color:inherit}.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+.aura{position:absolute;inset:0 0 auto 0;height:980px;overflow:hidden;z-index:-1;pointer-events:none}
+.aura:before,.aura:after{content:"";position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:aura 8s ease-in-out infinite}
+.aura:before{width:520px;height:520px;left:-120px;top:-60px;background:rgba(255,90,95,.35)}
+.aura:after{width:460px;height:460px;right:-100px;top:120px;background:rgba(15,144,255,.22);animation-delay:-4s}
+@keyframes aura{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,24px) scale(1.12)}}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:color-mix(in srgb,var(--surface) 80%,transparent);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:20px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Sora;font-weight:800;text-decoration:none;font-size:14px;line-height:1.05}
+.logo i{width:36px;height:36px;border-radius:var(--r1);background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;display:grid;place-items:center;font-style:normal;font-size:14px;box-shadow:0 0 12px rgba(255,90,95,.45)}
+.nav nav{display:flex;gap:22px;margin-left:16px}.nav nav a{text-decoration:none;font-size:14.5px;font-weight:500;color:var(--mut);transition:color .15s var(--ease)}.nav nav a:hover{color:var(--ink)}
+.sp{flex:1}.ic{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9999px;height:38px;padding:0 14px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.15s var(--ease)}.ic:hover{border-color:var(--ac)}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:9999px;padding:13px 24px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid transparent;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease)}
+.pill.p{background:var(--ac);color:#fff;box-shadow:0 6px 16px -10px rgba(255,90,95,.35),0 0 12px rgba(255,90,95,.4)}.pill.p:hover{transform:translateY(-2px);box-shadow:0 10px 28px -8px rgba(255,90,95,.55)}
+.pill.o{background:var(--card);border-color:var(--line);color:var(--ink);box-shadow:var(--sh-in)}.pill.o:hover{border-color:var(--ac);transform:translateY(-2px)}
+.pill:active{transform:scale(.97)}.navcta{animation:shake 4.2s ease-in-out infinite}
+@keyframes shake{0%,88%,100%{transform:none}90%{transform:rotate(-3deg)}93%{transform:rotate(3deg)}96%{transform:rotate(-2deg)}}
+.eyebrow{font-family:"DM Mono","JetBrains Mono",monospace;font-size:13px;letter-spacing:.02em;color:var(--ac);display:inline-flex;align-items:center;gap:8px;font-weight:500}
+.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ac);box-shadow:0 0 8px rgba(255,90,95,.5)}
+.hero{padding:72px 0 84px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(42px,7vw,80px);font-weight:800}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--ac),var(--ac2),var(--blue),var(--ac));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 4s linear infinite}
+@keyframes shim{to{background-position:300% 0}}
+.hero p.lead{font-size:19px;color:var(--mut);max-width:520px;margin:22px 0}.hero p.lead b{color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}.chip{font-family:"DM Mono",monospace;font-size:12.5px;border:1px solid var(--line);background:var(--card);border-radius:9999px;padding:5px 12px;color:var(--ink);box-shadow:var(--sh-in)}
+.chip:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);margin-right:7px;vertical-align:1px}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
-.hcard{background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:22px;position:relative}
-.hcard .ph{border-radius:18px;background:linear-gradient(160deg,var(--soft),var(--bg2));display:grid;place-items:end center;height:340px;overflow:hidden;position:relative}
+.hcard{background:var(--card);border-radius:var(--r4);box-shadow:var(--sh2),var(--sh-in);padding:20px;position:relative}
+.hcard .ph{border-radius:var(--r3);background:radial-gradient(70% 60% at 50% 30%,rgba(255,90,95,.2),transparent 70%),linear-gradient(160deg,var(--soft),var(--surface));display:grid;place-items:end center;height:350px;overflow:hidden;position:relative;animation:glow 8s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:inset 0 0 0 1px rgba(255,90,95,.2)}50%{box-shadow:inset 0 0 40px rgba(255,90,95,.18)}}
 .hcard .ph img{height:104%;max-width:100%;object-fit:contain;filter:drop-shadow(0 14px 22px rgba(0,0,0,.25))}
-.hcard .tag{position:absolute;top:34px;left:34px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:12.5px;font-weight:700;box-shadow:var(--shadow);z-index:2}
-.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.mini div{border:1px solid var(--line);border-radius:14px;text-align:center;padding:10px 4px}.mini b{display:block;font-family:Sora;font-size:22px;color:var(--ac)}.mini span{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-section{padding:78px 0;border-top:1px solid var(--line)}
-.sh{max-width:720px;margin-bottom:38px}.sh h2{font-size:clamp(32px,4.6vw,52px);font-weight:800;margin:14px 0 12px}.sh h2 .serif{display:block;color:var(--ink);font-size:1.02em}.sh p{color:var(--mut);font-size:17px;margin:0}
+.hcard .tag{position:absolute;top:32px;left:32px;background:var(--card);border-radius:var(--r1);padding:8px 12px;font-size:12.5px;font-weight:700;box-shadow:var(--sh-in),var(--sh3);z-index:2}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.mini div{border-radius:var(--r1);text-align:center;padding:10px 4px;box-shadow:var(--sh-in)}.mini b{display:block;font-family:Sora;font-size:22px;color:var(--ac)}.mini span{font-family:"DM Mono",monospace;font-size:12px;color:var(--mut)}
+.hint{display:flex;justify-content:center;padding-bottom:18px}.hint span{width:26px;height:42px;border:2px solid var(--line);border-radius:14px;position:relative}.hint span:after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--ac);animation:scrollh 2.2s ease-in-out infinite}
+@keyframes scrollh{0%{opacity:1;transform:translateY(0)}80%,100%{opacity:0;transform:translateY(14px)}}
+.marq{overflow:hidden;border-block:1px solid var(--line);background:var(--card);padding:16px 0}.marq div{display:flex;gap:44px;width:max-content;animation:mq 48s linear infinite;font-family:Sora;font-weight:700;font-size:20px;color:var(--mut)}.marq span:after{content:"✦";color:var(--ac);margin-left:44px}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:84px 0;border-top:1px solid var(--line)}section.nb{border:0}
+.sh{max-width:740px;margin-bottom:40px}.sh h2{font-size:clamp(32px,4.8vw,54px);font-weight:800;margin:14px 0 12px}.sh h2 .serif{display:block;font-size:1.04em;color:var(--ac)}.sh p{color:var(--mut);font-size:17px;margin:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow);transition:.2s}.card:hover{transform:translateY(-4px)}
-.card h3{font-size:19px;margin:10px 0 8px}.card p{margin:0 0 12px;color:var(--mut);font-size:15px}
-.num{width:38px;height:38px;border-radius:12px;background:var(--soft);color:var(--ac);display:grid;place-items:center;font-family:Sora;font-weight:800}
-.tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--mut)}
-.ver{font-family:"JetBrains Mono",monospace;font-size:11px;background:var(--gold);color:#3a0f1c;border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:middle}
-.card a.l{font-weight:700;color:var(--ac);text-decoration:none;font-size:14.5px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:6px}.stats .card{text-align:left}.stats b{font-family:Sora;font-size:44px;color:var(--ac);display:block;line-height:1}.stats span{color:var(--mut);font-size:14px}
-.cta{background:linear-gradient(135deg,var(--ac),#3a0f1c);color:#fff;border-radius:30px;padding:54px 30px;text-align:center}.cta h2{font-size:clamp(30px,4.5vw,50px);font-weight:800}.cta .serif{color:var(--gold)}.cta p{opacity:.85;max-width:520px;margin:14px auto 26px}
-.cta .pill.p{background:var(--gold);color:#3a0f1c;box-shadow:none}.cta .pill.o{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.card{background:var(--card);border-radius:var(--r3);padding:24px;box-shadow:var(--sh-in),var(--sh3);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}.card:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(255,90,95,.28),0 10px 28px -18px rgba(255,90,95,.45)}
+.card h3{font-size:20px;margin:12px 0 8px}.card p{margin:0 0 12px;color:var(--mut);font-size:15px}
+.num{width:40px;height:40px;border-radius:var(--r1);background:var(--soft);color:var(--ac);display:grid;place-items:center;font-family:Sora;font-weight:800}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{font-family:"DM Mono",monospace;font-size:12px;border-radius:9999px;padding:3px 11px;color:var(--mut);box-shadow:var(--sh-in)}
+.tags span:nth-child(3n+1){color:var(--blue)}.tags span:nth-child(3n+2){color:var(--ac2)}
+.ver{font-family:"DM Mono",monospace;font-size:12px;background:var(--soft);color:var(--ac);border-radius:9999px;padding:2px 10px;margin-left:6px;vertical-align:middle;font-weight:500}
+.card a.l{font-weight:700;color:var(--ac);text-decoration:none;font-size:14.5px}.card a.l:hover{text-decoration:underline}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.stats b{font-family:Sora;font-size:44px;color:var(--ac);display:block;line-height:1;margin-bottom:10px}.stats span{color:var(--mut);font-size:15px}
+.cta{background:linear-gradient(135deg,#1E1826,#2A2233);color:#F1ECF7;border-radius:var(--r4);padding:60px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.cta:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(255,90,95,.35);filter:blur(90px);left:50%;top:-220px;margin-left:-210px;animation:aura 8s ease-in-out infinite}
+.cta>*{position:relative}.cta h2{font-size:clamp(30px,4.8vw,54px);font-weight:800}.cta .serif{color:var(--teal)}.cta p{opacity:.8;max-width:520px;margin:14px auto 26px}.cta .eyebrow{color:var(--teal)}.cta .eyebrow:before{background:var(--teal)}
+.cta .pill.o{background:transparent;color:#fff;border-color:rgba(255,255,255,.35);box-shadow:none}
 footer{padding:30px 0 46px;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 [data-g]{display:none}body.gu [data-e]{display:none}body.gu [data-g]{display:inline}body.gu div[data-g],body.gu p[data-g]{display:block}
-@media(max-width:860px){.nav .pill{display:none}.nav{gap:10px}.logo span{font-size:13px}.hero{grid-template-columns:1fr;padding-top:40px}.nav nav{display:none}.hcard .ph{height:300px}}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:40px}.nav nav{display:none}.nav .pill{display:none}.nav{gap:10px}.logo span{font-size:13px}.hcard .ph{height:300px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
-<div class="bgglow"></div>
+<div class="aura"></div>
 <header><div class="wrap nav"><a class="logo" href="#"><i>DS</i><span>DARSHAN<br>CORPORATION</span></a>
 <nav><a href="#work"><span data-e>Work</span><span data-g>કામ</span></a><a href="#features"><span data-e>Features</span><span data-g>ફીચર્સ</span></a><a href="#stack"><span data-e>Stack</span><span data-g>સ્ટેક</span></a><a href="#about"><span data-e>About</span><span data-g>પરિચય</span></a></nav>
-<span class="sp"></span><button class="ic" id="lg">EN / ગુ</button><button class="ic" id="th" aria-label="theme">◐</button><a class="pill p" href="#contact" style="padding:9px 18px"><span data-e>Contact</span><span data-g>સંપર્ક</span></a></div></header>
+<span class="sp"></span><button class="ic" id="lg">EN / ગુ</button><button class="ic" id="th" aria-label="theme">🌓</button><a class="pill p navcta" href="#contact" style="padding:9px 18px"><span data-e>Contact</span><span data-g>સંપર્ક</span></a></div></header>
 <main class="wrap">
 <div class="hero"><div>
 <span class="eyebrow"><span data-e>Student developer · Rajkot, India</span><span data-g>વિદ્યાર્થી ડેવલપર · રાજકોટ</span></span>
@@ -65,7 +85,9 @@ footer{padding:30px 0 46px;color:var(--mut);font-size:14px;border-top:1px solid 
 <div class="btns"><a class="pill p" href="#work"><span data-e>See my work →</span><span data-g>મારું કામ જુઓ →</span></a><a class="pill o" href="#contact"><span data-e>Get in touch</span><span data-g>સંપર્ક કરો</span></a></div></div>
 <div class="hcard"><div class="tag"><span data-e>One developer, four platforms</span><span data-g>એક ડેવલપર, ચાર પ્લેટફોર્મ</span></div><div class="ph"><img src="assets/photo.png" alt="Darshankumar Savsani"></div>
 <div class="mini"><div><b>4</b><span data-e>Platforms</span><span data-g>પ્લેટફોર્મ</span></div><div><b>2</b><span data-e>Languages</span><span data-g>ભાષા</span></div><div><b>v2.0</b><span data-e>Latest</span><span data-g>તાજું</span></div></div></div></div>
-
+<div class="hint"><span></span></div></main>
+<div class="marq"><div><span>C</span><span>C++</span><span>Java</span><span>Python</span><span>Swift</span><span>Android</span><span>Flutter</span><span>HTML</span><span>SwiftUI</span><span>Git</span><span>AI tools</span><span>C</span><span>C++</span><span>Java</span><span>Python</span><span>Swift</span><span>Android</span><span>Flutter</span><span>HTML</span><span>SwiftUI</span><span>Git</span><span>AI tools</span></div></div>
+<main class="wrap">
 <section id="work"><div class="sh"><span class="eyebrow"><span data-e>Selected work</span><span data-g>પસંદ કરેલું કામ</span></span>
 <h2><span data-e>Darshan File Manager</span><span data-g>Darshan File Manager</span> <span class="serif"><span data-e>on every screen you own.</span><span data-g>તમારી દરેક સ્ક્રીન પર.</span></span></h2>
 <p><span data-e>One idea, four apps: sort messy folders, find duplicates, clean old files. Free to download from GitHub.</span><span data-g>એક વિચાર, ચાર એપ: ગંદા ફોલ્ડર સૉર્ટ કરો, duplicate શોધો, જૂની ફાઇલો સાફ કરો. GitHub પરથી મફત ડાઉનલોડ.</span></p></div>
@@ -97,7 +119,7 @@ footer{padding:30px 0 46px;color:var(--mut);font-size:14px;border-top:1px solid 
 <div class="card"><b>AI</b><span data-e>Curious about artificial intelligence, AI tools and creative technology.</span><span data-g>AI, AI ટૂલ્સ અને ક્રિએટિવ ટેકનોલોજીમાં રસ.</span></div>
 <div class="card"><b>Open</b><span data-e>Looking for an internship or entry-level Software / App Developer (Android &amp; Flutter) role.</span><span data-g>સોફ્ટવેર / એપ ડેવલપર (Android &amp; Flutter) ઇન્ટર્નશિપ કે શરૂઆતની નોકરી માટે ખુલ્લો.</span></div></div></section>
 
-<section id="contact" style="border:0"><div class="cta"><span class="eyebrow" style="color:var(--gold)"><span data-e>Let's talk</span><span data-g>વાત કરીએ</span></span>
+<section id="contact" class="nb"><div class="cta"><span class="eyebrow"><span data-e>Let's talk</span><span data-g>વાત કરીએ</span></span>
 <h2 style="margin-top:14px"><span data-e>Have an app idea?</span><span data-g>એપનો વિચાર છે?</span> <span class="serif"><span data-e>Let's build it.</span><span data-g>ચાલો બનાવીએ.</span></span></h2>
 <p><span data-e>Email me, find me on LinkedIn, or browse the code on GitHub.</span><span data-g>ઇમેઇલ કરો, LinkedIn પર મળો, કે GitHub પર કોડ જુઓ.</span></p>
 <div class="btns" style="justify-content:center"><a class="pill p" href="mailto:1darshankumarsavsani@gmail.com">Email</a><a class="pill o" href="https://www.linkedin.com/in/darshankumar-savsani-89a6b1389/">LinkedIn</a><a class="pill o" href="https://github.com/DARSHAN-CROP">GitHub</a></div></div></section>
