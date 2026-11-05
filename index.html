@@ -71,7 +71,39 @@ footer{padding:30px 0 46px;color:var(--mut);font-size:14px;border-top:1px solid 
 [data-g]{display:none}body.gu [data-e]{display:none}body.gu [data-g]{display:inline}body.gu div[data-g],body.gu p[data-g]{display:block}
 @media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:40px}.nav nav{display:none}.nav .pill{display:none}.nav{gap:10px}.logo span{font-size:13px}.hcard .ph{height:300px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style></head><body>
+
+/* ---- v4: glass + motion ---- */
+body{background:linear-gradient(180deg,var(--surface),var(--bg) 40%,var(--surface))}
+#bgc{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2),var(--blue),var(--teal));z-index:50;box-shadow:0 0 12px rgba(255,90,95,.6)}
+.cglow{position:fixed;width:420px;height:420px;border-radius:50%;left:0;top:0;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(255,90,95,.18),rgba(15,144,255,.08) 45%,transparent 70%);transform:translate(-50%,-50%);transition:opacity .3s;opacity:0}
+:root{--glass:rgba(255,255,255,.55);--glassb:rgba(255,255,255,.75)}
+html[data-t=dark]{--glass:rgba(40,28,52,.45);--glassb:rgba(255,255,255,.12)}
+header{background:var(--glass)!important;backdrop-filter:blur(20px) saturate(1.5)}
+.card,.hcard,.mini div,.tag,.chip,.ic,.pill.o,.marq{background:var(--glass)!important;backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);border:1px solid var(--glassb)}
+.card,.hcard{position:relative;overflow:hidden;transform-style:preserve-3d;will-change:transform}
+.card:before,.hcard:before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,90,95,.2),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover:before,.hcard:hover:before{opacity:1}
+.card:after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .8s var(--ease);pointer-events:none}
+.card:hover:after{left:130%}
+.hcard .ph{background:radial-gradient(70% 60% at 50% 30%,rgba(255,90,95,.28),transparent 70%),linear-gradient(160deg,rgba(255,90,95,.1),rgba(15,144,255,.1))!important;backdrop-filter:none}
+.fl{position:absolute;z-index:3;padding:7px 13px;border-radius:9999px;font-family:"DM Mono",monospace;font-size:12.5px;font-weight:500;background:var(--glass);backdrop-filter:blur(14px) saturate(1.6);border:1px solid var(--glassb);box-shadow:0 10px 30px -12px rgba(255,90,95,.45);animation:fy 5s ease-in-out infinite}
+.fl:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;background:var(--teal);box-shadow:0 0 8px var(--teal)}
+.fl.a{left:6%;top:24%}.fl.b{right:5%;top:16%;animation-delay:-1.2s}.fl.b:before{background:var(--ac)}.fl.c{left:4%;top:56%;animation-delay:-2.4s}.fl.c:before{background:var(--blue)}.fl.d{right:6%;top:50%;animation-delay:-3.4s}.fl.d:before{background:var(--ac2)}
+@keyframes fy{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1.5deg)}}
+.tw{font-family:"DM Mono",monospace;font-size:16px;margin:-6px 0 22px;color:var(--mut)}.tw b{color:var(--ac);font-weight:500}.caret{display:inline-block;width:2px;height:1.1em;background:var(--ac);margin-left:3px;vertical-align:-3px;animation:bl 1.05s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.js .rv{opacity:0;transform:translateY(34px) scale(.98);filter:blur(8px);transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+.hero h1 em{position:relative}
+.eyebrow:before{animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,90,95,.5)}50%{box-shadow:0 0 0 7px rgba(255,90,95,0)}}
+.num{animation:bob 4s ease-in-out infinite}@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(-4deg)}}
+.cta{background:linear-gradient(135deg,#1E1826,#2A2233,#3a1622,#1E1826);background-size:300% 300%;animation:gshift 10s ease infinite}
+@keyframes gshift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.pill.p{position:relative;overflow:hidden}.pill.p:after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:sweep 3.6s ease-in-out infinite}
+@keyframes sweep{0%,60%{left:-70%}100%{left:140%}}
+@media(max-width:860px){.fl{font-size:11px;padding:5px 10px}.cglow{display:none}}
+</style></head><body><canvas id="bgc"></canvas><div class="progress" id="pr"></div><div class="cglow" id="cg"></div>
 <div class="aura"></div>
 <header><div class="wrap nav"><a class="logo" href="#"><i>DS</i><span>DARSHAN<br>CORPORATION</span></a>
 <nav><a href="#work"><span data-e>Work</span><span data-g>કામ</span></a><a href="#features"><span data-e>Features</span><span data-g>ફીચર્સ</span></a><a href="#stack"><span data-e>Stack</span><span data-g>સ્ટેક</span></a><a href="#about"><span data-e>About</span><span data-g>પરિચય</span></a></nav>
@@ -81,10 +113,10 @@ footer{padding:30px 0 46px;color:var(--mut);font-size:14px;border-top:1px solid 
 <span class="eyebrow"><span data-e>Student developer · Rajkot, India</span><span data-g>વિદ્યાર્થી ડેવલપર · રાજકોટ</span></span>
 <h1 style="margin-top:16px"><span data-e>Turning ideas into</span><span data-g>વિચારોને બનાવીએ</span><br><em><span data-e>working apps.</span><span data-g>ચાલતી એપ.</span></em></h1>
 <p class="lead"><span data-e>I'm <b>Darshankumar Savsani</b>, a final-year Computer Engineering student. I build practical tools for <b>Windows, Android, macOS and iPhone</b> and I'm learning AI along the way.</span><span data-g>હું <b>દર્શનકુમાર સાવસાણી</b>, કમ્પ્યુટર એન્જિનિયરિંગનો અંતિમ વર્ષનો વિદ્યાર્થી. હું <b>Windows, Android, macOS અને iPhone</b> માટે ઉપયોગી ટૂલ્સ બનાવું છું અને સાથે AI શીખું છું.</span></p>
-<div class="chips"><span class="chip">Est. 2024</span><span class="chip">Diploma CE</span><span class="chip">EN · ગુજરાતી</span></div>
+<p class="tw"><span data-e>I build apps for </span><span data-g>હું એપ બનાવું છું: </span><b id="tw"></b><i class="caret"></i></p><div class="chips"><span class="chip">Est. 2024</span><span class="chip">Diploma CE</span><span class="chip">EN · ગુજરાતી</span></div>
 <div class="btns"><a class="pill p" href="#work"><span data-e>See my work →</span><span data-g>મારું કામ જુઓ →</span></a><a class="pill o" href="#contact"><span data-e>Get in touch</span><span data-g>સંપર્ક કરો</span></a></div></div>
-<div class="hcard"><div class="tag"><span data-e>One developer, four platforms</span><span data-g>એક ડેવલપર, ચાર પ્લેટફોર્મ</span></div><div class="ph"><img src="assets/photo.png" alt="Darshankumar Savsani"></div>
-<div class="mini"><div><b>4</b><span data-e>Platforms</span><span data-g>પ્લેટફોર્મ</span></div><div><b>2</b><span data-e>Languages</span><span data-g>ભાષા</span></div><div><b>v2.0</b><span data-e>Latest</span><span data-g>તાજું</span></div></div></div></div>
+<div class="hcard"><div class="tag"><span data-e>One developer, four platforms</span><span data-g>એક ડેવલપર, ચાર પ્લેટફોર્મ</span></div><div class="ph"><img src="assets/photo.png" alt="Darshankumar Savsani" id="me"><span class="fl a">Windows</span><span class="fl b">Android</span><span class="fl c">macOS</span><span class="fl d">iPhone</span></div>
+<div class="mini"><div><b data-n="4">4</b><span data-e>Platforms</span><span data-g>પ્લેટફોર્મ</span></div><div><b data-n="2">2</b><span data-e>Languages</span><span data-g>ભાષા</span></div><div><b>v2.0</b><span data-e>Latest</span><span data-g>તાજું</span></div></div></div></div>
 <div class="hint"><span></span></div></main>
 <div class="marq"><div><span>C</span><span>C++</span><span>Java</span><span>Python</span><span>Swift</span><span>Android</span><span>Flutter</span><span>HTML</span><span>SwiftUI</span><span>Git</span><span>AI tools</span><span>C</span><span>C++</span><span>Java</span><span>Python</span><span>Swift</span><span>Android</span><span>Flutter</span><span>HTML</span><span>SwiftUI</span><span>Git</span><span>AI tools</span></div></div>
 <main class="wrap">
@@ -131,4 +163,36 @@ var t=localStorage.getItem('t')||(matchMedia('(prefers-color-scheme:dark)').matc
 if(localStorage.getItem('g')==='1'||(!localStorage.getItem('g')&&(navigator.language||'').toLowerCase().startsWith('gu')))b.classList.add('gu');
 document.getElementById('th').onclick=function(){t=t==='dark'?'light':'dark';d.dataset.t=t;localStorage.setItem('t',t)};
 document.getElementById('lg').onclick=function(){b.classList.toggle('gu');localStorage.setItem('g',b.classList.contains('gu')?'1':'0')};
-</script></body></html>
+</script><script>
+(function(){var D=document,R=matchMedia('(prefers-reduced-motion:reduce)').matches,fine=matchMedia('(pointer:fine)').matches;D.documentElement.classList.add('js');
+/* reveal */
+var els=D.querySelectorAll('.sh,.card,.cta,.hero>*,.stats>*,.marq');els.forEach(function(e,i){e.classList.add('rv');e.style.transitionDelay=(i%4)*90+'ms'});
+var io=new IntersectionObserver(function(a){a.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)});
+setTimeout(function(){els.forEach(function(e){if(e.getBoundingClientRect().top<innerHeight)e.classList.add('in')})},60);
+/* progress */
+var pr=D.getElementById('pr');addEventListener('scroll',function(){var h=D.documentElement;pr.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+/* count up */
+D.querySelectorAll('[data-n]').forEach(function(b){var n=+b.dataset.n,t=0;if(R)return;b.textContent='0';var s=setInterval(function(){t++;b.textContent=t;if(t>=n)clearInterval(s)},260)});
+/* typewriter */
+var tw=D.getElementById('tw'),W=['Windows','Android','macOS','iPhone','all your screens'],wi=0,ci=0,del=false;
+function tick(){var w=W[wi];if(R){tw.textContent=w;return}tw.textContent=w.slice(0,ci);if(!del&&ci<w.length){ci++;setTimeout(tick,95)}else if(!del){del=true;setTimeout(tick,1400)}else if(ci>0){ci--;setTimeout(tick,45)}else{del=false;wi=(wi+1)%W.length;setTimeout(tick,250)}}tick();
+/* cursor glow + tilt + photo parallax */
+var cg=D.getElementById('cg'),me=D.getElementById('me');
+if(fine&&!R){addEventListener('mousemove',function(e){cg.style.opacity=1;cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';if(me){var x=(e.clientX/innerWidth-.5)*14,y=(e.clientY/innerHeight-.5)*10;me.style.transform='translate('+x+'px,'+y+'px)'}},{passive:true});
+D.querySelectorAll('.card,.hcard').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;c.style.setProperty('--mx',px*100+'%');c.style.setProperty('--my',py*100+'%');c.style.transform='perspective(900px) rotateX('+((.5-py)*7)+'deg) rotateY('+((px-.5)*9)+'deg) translateY(-4px)'});c.addEventListener('mouseleave',function(){c.style.transform=''})})}
+/* animated background: floating symbols + network */
+var cv=D.getElementById('bgc'),x=cv.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2),w,h,P=[],M={x:-999,y:-999},S=['→','{ }','</>','↗','( )','[ ]','=>','01','+','◦'],C=['255,90,95','15,144,255','0,226,226','253,99,71'];
+function rs(){w=cv.width=innerWidth*dpr;h=cv.height=innerHeight*dpr;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';var n=Math.round(Math.min(46,innerWidth/26));P=[];for(var i=0;i<n;i++)P.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.35*dpr,vy:(Math.random()-.5)*.35*dpr-.12*dpr,s:S[i%S.length],c:C[i%C.length],z:.6+Math.random()*1.1,r:Math.random()*6.28,vr:(Math.random()-.5)*.004,sym:i%3!==0})}
+rs();addEventListener('resize',rs);addEventListener('mousemove',function(e){M.x=e.clientX*dpr;M.y=e.clientY*dpr},{passive:true});
+function draw(){x.clearRect(0,0,w,h);var dark=D.documentElement.dataset.t==='dark',a=dark?.5:.38;
+for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;var dx=p.x-M.x,dy=p.y-M.y,d=Math.sqrt(dx*dx+dy*dy);if(d<170*dpr){p.x+=dx/d*1.6;p.y+=dy/d*1.6}
+if(p.x<-40)p.x=w+40;if(p.x>w+40)p.x=-40;if(p.y<-40)p.y=h+40;if(p.y>h+40)p.y=-40;
+for(var j=i+1;j<P.length;j++){var q=P[j],ex=p.x-q.x,ey=p.y-q.y,e=Math.sqrt(ex*ex+ey*ey);if(e<150*dpr){x.strokeStyle='rgba('+p.c+','+(.16*(1-e/(150*dpr)))+')';x.lineWidth=dpr;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}
+x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle='rgba('+p.c+','+a+')';
+if(p.sym){x.font='600 '+(15*p.z*dpr)+'px "DM Mono",monospace';x.textAlign='center';x.fillText(p.s,0,0)}else{x.beginPath();x.arc(0,0,3*p.z*dpr,0,6.28);x.fill()}x.restore()}
+if(!R&&!D.hidden)requestAnimationFrame(draw)}
+if(R){draw()}else{draw()}
+D.addEventListener('visibilitychange',function(){if(!D.hidden&&!R)requestAnimationFrame(draw)});
+})();
+</script>
+</body></html>
