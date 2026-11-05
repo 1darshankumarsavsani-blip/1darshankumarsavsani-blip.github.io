@@ -77,7 +77,7 @@ States for every interactive part: default, hover (lift), focus-visible (3px blu
 - Don't add colours outside the palette.
 - Don't mix other border radii.
 - Don't nest buttons inside links.
-- Don't put his phone number or resume PDF on the public page.
+- Phone numbers are public on the Contact section because Darshankumar asked for them (WhatsApp +91 87996 15978, call +91 94284 64677). The resume PDF is not on the site.
 - Don't claim apps were tested on devices they were not (macOS and iPhone apps ran only on GitHub's build servers).
 
 ## Writing tone
