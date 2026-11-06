@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Darshankumar Savsani - Mono edition</title><meta name="theme-color" content="#050505">
+<style>
+:root{--bg:#050505;--fg:#f4f4f4;--mut:#8d8d8d;--line:#222;--glass:#ffffff0d}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:"Inter",system-ui,-apple-system,"Noto Sans Gujarati","Segoe UI",sans-serif;overflow-x:hidden}
+.glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(600px circle at var(--x,70%) var(--y,20%),#ffffff14,transparent 60%);z-index:0}
+header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:20px;padding:16px 28px;background:#050505b3;backdrop-filter:blur(12px);border-bottom:1px solid #151515}
+header b{font-weight:800;letter-spacing:-.02em}header nav{margin-left:auto;display:flex;gap:22px;font-size:14px}header a{color:var(--mut);text-decoration:none;transition:.2s}header a:hover{color:#fff}
+.lang{border:1px solid #333;background:none;color:#fff;border-radius:99px;padding:6px 14px;cursor:pointer;font-size:13px}
+main{position:relative;z-index:1}
+section{max-width:1100px;margin:0 auto;padding:110px 24px}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:110px}
+.eyebrow{font-size:12px;letter-spacing:.35em;color:var(--mut);margin-bottom:18px}
+h1{font-size:clamp(44px,8vw,104px);line-height:.95;letter-spacing:-.05em;font-weight:900}
+.rot{display:block;height:1.05em;overflow:hidden;position:relative;color:#fff}
+.rot span{display:block;position:absolute;left:0;top:0;transform:translateY(110%);opacity:0;transition:.7s cubic-bezier(.2,.8,.2,1);color:transparent;-webkit-text-stroke:1.5px #fff}
+.rot span.on{transform:none;opacity:1}.rot span.out{transform:translateY(-110%);opacity:0}
+.lead{color:var(--mut);margin-top:22px;max-width:520px;line-height:1.7;font-size:17px}
+.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:99px;background:#fff;color:#000;text-decoration:none;font-weight:700;transition:.25s;border:1px solid #fff}.btn.o{background:none;color:#fff;border-color:#444}.btn:hover{transform:translateY(-3px);box-shadow:0 10px 40px #ffffff22}
+.ph{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#1c1c1c,#060606);border:1px solid #1f1f1f}
+.ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);mix-blend-mode:lighten;transition:.6s}.ph:hover img{filter:grayscale(0) contrast(1)}
+.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#050505 0%,transparent 40%)}
+.hello{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;background:var(--glass);border:1px solid #ffffff1f;backdrop-filter:blur(14px);border-radius:18px;padding:16px;display:flex;gap:18px;justify-content:space-between}
+.hello b{display:block;font-size:20px}.hello small{color:var(--mut)}
+.k{font-size:12px;letter-spacing:.3em;color:var(--mut)}h2{font-size:clamp(30px,5.5vw,58px);letter-spacing:-.04em;font-weight:900;margin:10px 0 30px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{padding:10px 18px;border:1px solid #2b2b2b;border-radius:99px;color:#ddd;font-size:15px;transition:.25s;background:#0b0b0b}.chip:hover{background:#fff;color:#000;transform:translateY(-3px)}
+.chips h4{width:100%;color:var(--mut);font-weight:500;font-size:13px;margin-top:14px;letter-spacing:.2em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{border:1px solid #232323;border-radius:22px;padding:26px;background:linear-gradient(180deg,#0f0f0f,#080808);transition:.3s;position:relative}
+.card:hover{border-color:#666;transform:translateY(-6px)}.card .no{color:#2c2c2c;font-size:54px;font-weight:900;position:absolute;right:20px;top:8px}
+.card h3{font-size:22px;margin:6px 0 10px}.card p{color:var(--mut);line-height:1.65;font-size:15px}.card .t{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.card .t i{font-style:normal;font-size:12px;border:1px solid #333;border-radius:99px;padding:4px 10px;color:#bbb}
+.card a{display:inline-block;margin-top:16px;color:#fff;font-weight:700;text-decoration:none;border-bottom:1px solid #fff}
+.tl{border-left:1px solid #333;padding-left:24px;display:grid;gap:26px}.tl div b{display:block;font-size:19px}.tl div span{color:var(--mut);line-height:1.6}
+.contact{display:flex;gap:12px;flex-wrap:wrap}
+.name{font-size:clamp(70px,22vw,300px);font-weight:900;letter-spacing:-.06em;line-height:.85;text-align:center;color:transparent;-webkit-text-stroke:1px #333;transition:.5s;user-select:none;padding:30px 0 0;position:relative;z-index:1;overflow:hidden}
+.name:hover{color:#fff;-webkit-text-stroke:0;text-shadow:0 0 80px #ffffff55}
+footer{text-align:center;color:#555;padding:20px 10px 40px;font-size:13px;position:relative;z-index:1}footer a{color:#777}
+.rev{opacity:0;transform:translateY(36px);transition:1s}.rev.in{opacity:1;transform:none}
+.gu{display:none}body.g .gu{display:inline}body.g .en{display:none}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:100px}header nav{display:none}.ph{max-width:420px}}
+</style></head><body>
+<div class="glow" id="gl"></div>
+<header><b>DARSHAN.</b><nav><a href="#about"><span class="en">About</span><span class="gu">પરિચય</span></a><a href="#tech"><span class="en">Tech</span><span class="gu">ટેક</span></a><a href="#projects"><span class="en">Projects</span><span class="gu">પ્રોજેક્ટ</span></a><a href="#contact"><span class="en">Contact</span><span class="gu">સંપર્ક</span></a></nav><button class="lang" id="lg">ગુ / EN</button></header>
+<main>
+<section class="hero" id="top">
+ <div><div class="eyebrow">HI, I'M DARSHANKUMAR</div>
+ <h1>I build<span class="rot" id="rot"><span class="on">apps.</span><span>tools.</span><span>systems.</span></span></h1>
+ <p class="lead"><span class="en">Final-year Computer Engineering student from Rajkot. I make practical apps for Windows, Android, macOS and iPhone, in Gujarati and English.</span><span class="gu">રાજકોટનો કમ્પ્યુટર એન્જિનિયરિંગનો અંતિમ વર્ષનો વિદ્યાર્થી. હું Windows, Android, macOS અને iPhone માટે ગુજરાતી અને English માં ઉપયોગી એપ બનાવું છું.</span></p>
+ <div class="cta"><a class="btn" href="#projects"><span class="en">View projects</span><span class="gu">પ્રોજેક્ટ જુઓ</span></a><a class="btn o" href="#contact"><span class="en">Contact me</span><span class="gu">સંપર્ક કરો</span></a></div></div>
+ <div class="ph"><img src="../assets/photo.png" alt="Darshankumar Savsani"><div class="hello"><div><b>Hello, I'm Darshankumar</b><small>DARSHAN CORPORATION · Rajkot</small></div><div style="text-align:right"><b>4</b><small><span class="en">platforms</span><span class="gu">પ્લેટફોર્મ</span></small></div></div></div>
+</section>
+<section id="about"><div class="k rev">01 — <span class="en">ABOUT</span><span class="gu">પરિચય</span></div><h2 class="rev"><span class="en">Learning by building.</span><span class="gu">બનાવીને શીખવું.</span></h2>
+<div class="tl rev"><div><b>2024 — 27</b><span><span class="en">Diploma in Computer Engineering, Atmiya University, Rajkot (final year). Semesters 1-2 at RK University.</span><span class="gu">કમ્પ્યુટર એન્જિનિયરિંગ ડિપ્લોમા, આત્મીય યુનિવર્સિટી, રાજકોટ (અંતિમ વર્ષ). સેમ 1-2 આર.કે. યુનિવર્સિટી.</span></span></div>
+<div><b>AI</b><span><span class="en">Curious about artificial intelligence, AI tools and creative technology.</span><span class="gu">AI, AI ટૂલ્સ અને ક્રિએટિવ ટેકનોલોજીમાં રસ.</span></span></div>
+<div><b><span class="en">Open to work</span><span class="gu">કામ માટે ખુલ્લો</span></b><span><span class="en">Internship or entry-level Software / App Developer (Android &amp; Flutter) role.</span><span class="gu">સોફ્ટવેર / એપ ડેવલપર (Android &amp; Flutter) ઇન્ટર્નશિપ કે શરૂઆતની નોકરી.</span></span></div></div></section>
+<section id="tech"><div class="k rev">02 — <span class="en">TECHNOLOGIES</span><span class="gu">ટેક્નોલોજી</span></div><h2 class="rev"><span class="en">Technologies I work with.</span><span class="gu">જેની સાથે હું કામ કરું છું.</span></h2>
+<div class="chips rev"><h4>PROGRAMMING</h4><div class="chip">C</div><div class="chip">C++</div><div class="chip">Java</div><div class="chip">Python</div><div class="chip">Swift</div><h4>APPS &amp; WEB</h4><div class="chip">Android</div><div class="chip">Flutter</div><div class="chip">HTML / CSS</div><div class="chip">SwiftUI</div><div class="chip">Firebase</div><h4>WORKFLOW</h4><div class="chip">Git &amp; GitHub</div><div class="chip">CI builds</div><div class="chip">AI tools</div></div></section>
+<section id="projects"><div class="k rev">03 — <span class="en">PROJECTS</span><span class="gu">પ્રોજેક્ટ</span></div><h2 class="rev"><span class="en">Featured projects.</span><span class="gu">મુખ્ય પ્રોજેક્ટ.</span></h2>
+<div class="grid">
+<div class="card rev"><div class="no">01</div><h3>Student Planner</h3><p><span class="en">Exams, syllabus, homework rings, timetable, attendance, marks and CGPA. Android, web and Windows with Google sync.</span><span class="gu">પરીક્ષા, અભ્યાસક્રમ, હોમવર્ક રિંગ, ટાઇમટેબલ, હાજરી, માર્ક્સ અને CGPA. Android, web, Windows, Google sync.</span></p><div class="t"><i>Java</i><i>Firebase</i><i>PWA</i></div><a href="https://1darshankumarsavsani-blip.github.io/Student-Planner/">Open →</a></div>
+<div class="card rev"><div class="no">02</div><h3>Khata Book</h3><p><span class="en">Income, expense and credit ledger with PIN lock, due reminders, category reports and PDF statements.</span><span class="gu">આવક, ખર્ચ, ઉધાર, PIN lock, રિમાઇન્ડર, રિપોર્ટ અને PDF.</span></p><div class="t"><i>Java</i><i>Firebase</i><i>PDF</i></div><a href="https://1darshankumarsavsani-blip.github.io/Khata-Book/">Open →</a></div>
+<div class="card rev"><div class="no">03</div><h3>Vishwas</h3><p><span class="en">Milestone payment tracker for freelancers. Clients approve work on a link, and on-time delivery builds a trust score.</span><span class="gu">Freelancers માટે milestone payment tracker. Client લિંક પર approve કરે, સમયસર ડિલિવરીથી trust score.</span></p><div class="t"><i>Web</i><i>Firestore</i></div><a href="https://1darshankumarsavsani-blip.github.io/Vishwas/">Open →</a></div>
+<div class="card rev"><div class="no">04</div><h3>Darshan File Manager</h3><p><span class="en">Sort folders, find duplicates, clean old files, undo everything. For Windows, Android, macOS and iPhone.</span><span class="gu">ફોલ્ડર સૉર્ટ, duplicate, સફાઈ, Undo. Windows, Android, macOS, iPhone.</span></p><div class="t"><i>C</i><i>Java</i><i>SwiftUI</i></div><a href="https://github.com/DARSHAN-CROP">GitHub →</a></div>
+</div></section>
+<section id="contact"><div class="k rev">04 — <span class="en">CONTACT</span><span class="gu">સંપર્ક</span></div><h2 class="rev"><span class="en">Let's build something.</span><span class="gu">ચાલો કંઈક બનાવીએ.</span></h2>
+<div class="contact rev"><a class="btn" href="https://wa.me/918799615978">WhatsApp</a><a class="btn o" href="tel:+918799615978">+91 87996 15978</a><a class="btn o" href="tel:+919428464677">+91 94284 64677</a><a class="btn o" href="mailto:1darshankumarsavsani@gmail.com">Email</a><a class="btn o" href="https://www.linkedin.com/in/darshankumar-savsani-89a6b1389/">LinkedIn</a><a class="btn o" href="https://github.com/DARSHAN-CROP">GitHub</a></div></section>
+</main>
+<div class="name">DARSHAN</div>
+<footer>© DARSHAN CORPORATION · <a href="../">Light edition</a> · <a href="../dark/">Dark edition</a></footer>
+<script>
+var lg=document.getElementById("lg");if(localStorage.getItem("mn_gu")==="1")document.body.classList.add("g");
+lg.onclick=function(){document.body.classList.toggle("g");localStorage.setItem("mn_gu",document.body.classList.contains("g")?"1":"0")};
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in")})},{threshold:.12});
+document.querySelectorAll(".rev").forEach(function(x){io.observe(x)});
+var sp=document.querySelectorAll("#rot span"),ix=0;setInterval(function(){sp[ix].className="out";var n=(ix+1)%sp.length;setTimeout(function(){sp[ix].className=""},700);ix=n;sp[ix].className="on"},2200);
+document.addEventListener("mousemove",function(e){var g=document.getElementById("gl");g.style.setProperty("--x",e.clientX+"px");g.style.setProperty("--y",e.clientY+"px")});
+</script></body></html>
