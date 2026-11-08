@@ -81,7 +81,7 @@ footer{text-align:center;color:#665f73;font-size:12px;padding:20px 10px 40px}foo
  <div class="cta"><a class="b1" href="#projects"><span class="en">View Projects</span><span class="gu">પ્રોજેક્ટ જુઓ</span></a><a class="b2" href="#contact"><span class="en">Contact</span><span class="gu">સંપર્ક</span></a></div></div>
  <div class="scroll"><i></i><span class="en">SCROLL TO EXPLORE</span><span class="gu">નીચે સ્ક્રોલ કરો</span></div>
 </section>
-<section id="about"><div class="ab"><div class="card3d rev" id="c3"><div class="d a"></div><div class="d b"></div><div class="im" id="im"><img src="../assets/photo.png" alt=""><div class="badge">OPEN TO OPPORTUNITIES</div></div></div>
+<section id="about"><div class="ab"><div class="card3d rev" id="c3"><div class="d a"></div><div class="d b"></div><div class="im" id="im"><img src="../assets/photo.png" alt="" loading="lazy" decoding="async"><div class="badge">OPEN TO OPPORTUNITIES</div></div></div>
 <div class="rev"><span class="ey">ABOUT ME</span><h2><span class="en">Hello, I'm Darshankumar</span><span class="gu">નમસ્તે, હું દર્શનકુમાર</span></h2>
 <p class="l"><span class="en">Diploma in Computer Engineering at Atmiya University, Rajkot (final year). I learn by building: file managers, a student planner, a khata book and a freelancer payment tracker, all shipped on real platforms.</span><span class="gu">આત્મીય યુનિવર્સિટી, રાજકોટમાં કમ્પ્યુટર એન્જિનિયરિંગ ડિપ્લોમા (અંતિમ વર્ષ). હું બનાવીને શીખું છું: ફાઇલ મેનેજર, સ્ટુડન્ટ પ્લાનર, ખાતાવહી અને ફ્રીલાન્સર પેમેન્ટ ટ્રેકર.</span></p>
 <div class="tiles"><div class="tile"><b>Android</b><small>Java · Flutter</small></div><div class="tile"><b>Web</b><small>HTML · Firebase</small></div><div class="tile"><b><span class="en">Available</span><span class="gu">ઉપલબ્ધ</span></b><small><span class="en">Internship / Jr. Dev</span><span class="gu">ઇન્ટર્નશિપ / જુનિયર</span></small></div></div></div></div></section>
@@ -116,4 +116,26 @@ var c3=document.getElementById("c3"),im=document.getElementById("im");
 c3.addEventListener("mousemove",function(e){var r=c3.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;im.style.transform="rotateY("+x*14+"deg) rotateX("+(-y*14)+"deg)"});
 c3.addEventListener("mouseleave",function(){im.style.transform=""});
 document.getElementById("fm").onsubmit=function(e){e.preventDefault();var m="Hi Darshankumar, I'm "+document.getElementById("fn").value+" ("+document.getElementById("fe").value+"). "+document.getElementById("fx").value;window.open("https://wa.me/918799615978?text="+encodeURIComponent(m),"_blank")};
+</script><script>
+(function(){var D=document,B=D.body,P="../assets/i18n.js",SRC="../assets/i18n.js",ST='lang';
+var L=[["en", "English"], ["gu", "ગુજરાતી"], ["hi", "हिन्दी"], ["mr", "मराठी"], ["bn", "বাংলা"], ["ta", "தமிழ்"], ["te", "తెలుగు"], ["kn", "ಕನ್ನಡ"], ["pa", "ਪੰਜਾਬੀ"], ["ur", "اردو"], ["ar", "العربية"], ["es", "Español"], ["fr", "Français"]];
+function ens(){return D.querySelectorAll('[data-e],.en')}
+function setLang(l){
+ B.classList.remove('g');D.documentElement.lang=l;D.documentElement.dir=(l==='ar'||l==='ur')?'rtl':'ltr';
+ try{localStorage.setItem(ST,l);localStorage.setItem('g',l==='gu'?'1':'0')}catch(e){}
+ if(l==='gu'){B.classList.add('g');restore();return}
+ if(l==='en'){restore();return}
+ var go=function(){var T=window.I18N&&window.I18N[l]||{};ens().forEach(function(e){if(e.dataset.o===undefined)e.dataset.o=e.innerHTML;var k=e.dataset.o.trim();e.innerHTML=T[k]||e.dataset.o})};
+ if(window.I18N)go();else{var s=D.createElement('script');s.src=P;s.onload=go;D.head.appendChild(s)}
+}
+function restore(){ens().forEach(function(e){if(e.dataset.o!==undefined)e.innerHTML=e.dataset.o})}
+var old=D.getElementById('lg'),sel=D.createElement('select');sel.id='lsel';sel.setAttribute('aria-label','Language');
+sel.style.cssText='background:transparent;color:inherit;border:1px solid currentColor;border-radius:99px;padding:7px 10px;font:inherit;font-size:13px;cursor:pointer;max-width:120px';
+L.forEach(function(o){var op=D.createElement('option');op.value=o[0];op.textContent=o[1];op.style.color='#111';sel.appendChild(op)});
+if(old){old.style.display='none';old.parentNode.insertBefore(sel,old)}else D.body.appendChild(sel);
+var cur='en';try{cur=localStorage.getItem(ST)||(localStorage.getItem('g')==='1'?'gu':((navigator.language||'en').slice(0,2)))}catch(e){}
+if(!L.some(function(o){return o[0]===cur}))cur='en';
+sel.value=cur;sel.onchange=function(){setLang(sel.value)};
+if(cur!=='en'||B.classList.contains('g'))setLang(cur);
+})();
 </script></body></html>
