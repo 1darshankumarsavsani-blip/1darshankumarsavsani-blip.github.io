@@ -52,8 +52,7 @@ body.g .blk.gu{display:block}
  <div class="big">DARSHAN<span>DARSHAN</span></div>
  <p class="sub"><span class="en">Student developer from Rajkot. I turn ideas into working apps for Windows, Android, macOS and iPhone.</span><span class="gu">રાજકોટનો વિદ્યાર્થી ડેવલપર. હું વિચારોને Windows, Android, macOS અને iPhone માટે ચાલતી એપમાં બનાવું છું.</span></p>
  <div class="cta"><a class="btn" href="#work"><span class="en">See my work</span><span class="gu">મારું કામ જુઓ</span></a><a class="btn o" href="#contact"><span class="en">Get in touch</span><span class="gu">સંપર્ક કરો</span></a></div>
- <div class="stats"><div><b>4</b><span class="en">Platforms</span><span class="gu">પ્લેટફોર્મ</span></div><div><b>2</b><span class="en">Languages</span><span class="gu">ભાષા</span></div><div><b>7+</b><span class="en">Apps shipped</span><span class="gu">એપ બનાવી</span></div></div>
-</section>
+ </section>
 <div class="marq"><div><span>ANDROID</span><span>WINDOWS</span><span>MACOS</span><span>IPHONE</span><span>JAVA</span><span>PYTHON</span><span>FLUTTER</span><span>AI</span><span>ANDROID</span><span>WINDOWS</span><span>MACOS</span><span>IPHONE</span><span>JAVA</span><span>PYTHON</span><span>FLUTTER</span><span>AI</span></div></div>
 <section id="work"><div class="tag rev">01 / <span class="en">SELECTED WORK</span><span class="gu">પસંદ કરેલું કામ</span></div><h2 class="rev"><span class="en">Apps I <em>shipped</em></span><span class="gu">મેં બનાવેલી <em>એપ</em></span></h2>
 <div class="grid">
@@ -88,4 +87,26 @@ addEventListener("resize",rs);addEventListener("mousemove",function(e){mx=e.clie
 (function d(){x.clearRect(0,0,W,H);P.forEach(function(p,i){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;x.fillStyle="#ff2d2d";x.globalAlpha=.55;x.fillRect(p.x,p.y,2,2);
  for(var j=i+1;j<P.length;j++){var q=P[j],dx=p.x-q.x,dy=p.y-q.y,dd=dx*dx+dy*dy;if(dd<12000){x.globalAlpha=.16*(1-dd/12000);x.strokeStyle="#ff2d2d";x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}
  var ddx=p.x-mx,ddy=p.y-my;if(ddx*ddx+ddy*ddy<20000){x.globalAlpha=.4;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(mx,my);x.stroke()}});requestAnimationFrame(d)})();
+</script><script>
+(function(){var D=document,B=D.body,P="../assets/i18n.js",SRC="../assets/i18n.js",ST='lang';
+var L=[["en", "English"], ["gu", "ગુજરાતી"], ["hi", "हिन्दी"], ["mr", "मराठी"], ["bn", "বাংলা"], ["ta", "தமிழ்"], ["te", "తెలుగు"], ["kn", "ಕನ್ನಡ"], ["pa", "ਪੰਜਾਬੀ"], ["ur", "اردو"], ["ar", "العربية"], ["es", "Español"], ["fr", "Français"]];
+function ens(){return D.querySelectorAll('[data-e],.en')}
+function setLang(l){
+ B.classList.remove('g');D.documentElement.lang=l;D.documentElement.dir=(l==='ar'||l==='ur')?'rtl':'ltr';
+ try{localStorage.setItem(ST,l);localStorage.setItem('g',l==='gu'?'1':'0')}catch(e){}
+ if(l==='gu'){B.classList.add('g');restore();return}
+ if(l==='en'){restore();return}
+ var go=function(){var T=window.I18N&&window.I18N[l]||{};ens().forEach(function(e){if(e.dataset.o===undefined)e.dataset.o=e.innerHTML;var k=e.dataset.o.trim();e.innerHTML=T[k]||e.dataset.o})};
+ if(window.I18N)go();else{var s=D.createElement('script');s.src=P;s.onload=go;D.head.appendChild(s)}
+}
+function restore(){ens().forEach(function(e){if(e.dataset.o!==undefined)e.innerHTML=e.dataset.o})}
+var old=D.getElementById('lg'),sel=D.createElement('select');sel.id='lsel';sel.setAttribute('aria-label','Language');
+sel.style.cssText='background:transparent;color:inherit;border:1px solid currentColor;border-radius:99px;padding:7px 10px;font:inherit;font-size:13px;cursor:pointer;max-width:120px';
+L.forEach(function(o){var op=D.createElement('option');op.value=o[0];op.textContent=o[1];op.style.color='#111';sel.appendChild(op)});
+if(old){old.style.display='none';old.parentNode.insertBefore(sel,old)}else D.body.appendChild(sel);
+var cur='en';try{cur=localStorage.getItem(ST)||(localStorage.getItem('g')==='1'?'gu':((navigator.language||'en').slice(0,2)))}catch(e){}
+if(!L.some(function(o){return o[0]===cur}))cur='en';
+sel.value=cur;sel.onchange=function(){setLang(sel.value)};
+if(cur!=='en'||B.classList.contains('g'))setLang(cur);
+})();
 </script></body></html>
