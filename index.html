@@ -115,8 +115,8 @@ header{background:var(--glass)!important;backdrop-filter:blur(20px) saturate(1.5
 <p class="lead"><span data-e>I'm <b>Darshankumar Savsani</b>, a final-year Computer Engineering student. I build practical tools for <b>Windows, Android, macOS and iPhone</b> and I'm learning AI along the way.</span><span data-g>હું <b>દર્શનકુમાર સાવસાણી</b>, કમ્પ્યુટર એન્જિનિયરિંગનો અંતિમ વર્ષનો વિદ્યાર્થી. હું <b>Windows, Android, macOS અને iPhone</b> માટે ઉપયોગી ટૂલ્સ બનાવું છું અને સાથે AI શીખું છું.</span></p>
 <p class="tw"><span data-e>I build apps for </span><span data-g>હું એપ બનાવું છું: </span><b id="tw"></b><i class="caret"></i></p><div class="chips"><span class="chip">Est. 2024</span><span class="chip">Diploma CE</span><span class="chip">EN · ગુજરાતી</span></div>
 <div class="btns"><a class="pill p" href="#work"><span data-e>See my work →</span><span data-g>મારું કામ જુઓ →</span></a><a class="pill o" href="#contact"><span data-e>Get in touch</span><span data-g>સંપર્ક કરો</span></a></div></div>
-<div class="hcard"><div class="ph"><img src="assets/photo.png" alt="Darshankumar Savsani" id="me"><span class="fl a">Windows</span><span class="fl b">Android</span><span class="fl c">macOS</span><span class="fl d">iPhone</span></div>
-<div class="mini"><div><b data-n="4">4</b><span data-e>Platforms</span><span data-g>પ્લેટફોર્મ</span></div><div><b data-n="2">2</b><span data-e>Languages</span><span data-g>ભાષા</span></div><div><b>v2.0</b><span data-e>Latest</span><span data-g>તાજું</span></div></div></div></div>
+<div class="hcard"><div class="ph"><img src="assets/photo.png" alt="Darshankumar Savsani" id="me" decoding="async"><span class="fl a">Windows</span><span class="fl b">Android</span><span class="fl c">macOS</span><span class="fl d">iPhone</span></div>
+</div></div>
 <div class="hint"><span></span></div></main>
 <div class="marq"><div><span>C</span><span>C++</span><span>Java</span><span>Python</span><span>Swift</span><span>Android</span><span>Flutter</span><span>HTML</span><span>SwiftUI</span><span>Git</span><span>AI tools</span><span>C</span><span>C++</span><span>Java</span><span>Python</span><span>Swift</span><span>Android</span><span>Flutter</span><span>HTML</span><span>SwiftUI</span><span>Git</span><span>AI tools</span></div></div>
 <main class="wrap">
@@ -209,4 +209,26 @@ if(R){draw()}else{draw()}
 D.addEventListener('visibilitychange',function(){if(!D.hidden&&!R)requestAnimationFrame(draw)});
 })();
 </script>
-</body></html>
+<script>
+(function(){var D=document,B=D.body,P="assets/i18n.js",SRC="assets/i18n.js",ST='lang';
+var L=[["en", "English"], ["gu", "ગુજરાતી"], ["hi", "हिन्दी"], ["mr", "मराठी"], ["bn", "বাংলা"], ["ta", "தமிழ்"], ["te", "తెలుగు"], ["kn", "ಕನ್ನಡ"], ["pa", "ਪੰਜਾਬੀ"], ["ur", "اردو"], ["ar", "العربية"], ["es", "Español"], ["fr", "Français"]];
+function ens(){return D.querySelectorAll('[data-e],.en')}
+function setLang(l){
+ B.classList.remove('gu');D.documentElement.lang=l;D.documentElement.dir=(l==='ar'||l==='ur')?'rtl':'ltr';
+ try{localStorage.setItem(ST,l);localStorage.setItem('g',l==='gu'?'1':'0')}catch(e){}
+ if(l==='gu'){B.classList.add('gu');restore();return}
+ if(l==='en'){restore();return}
+ var go=function(){var T=window.I18N&&window.I18N[l]||{};ens().forEach(function(e){if(e.dataset.o===undefined)e.dataset.o=e.innerHTML;var k=e.dataset.o.trim();e.innerHTML=T[k]||e.dataset.o})};
+ if(window.I18N)go();else{var s=D.createElement('script');s.src=P;s.onload=go;D.head.appendChild(s)}
+}
+function restore(){ens().forEach(function(e){if(e.dataset.o!==undefined)e.innerHTML=e.dataset.o})}
+var old=D.getElementById('lg'),sel=D.createElement('select');sel.id='lsel';sel.setAttribute('aria-label','Language');
+sel.style.cssText='background:transparent;color:inherit;border:1px solid currentColor;border-radius:99px;padding:7px 10px;font:inherit;font-size:13px;cursor:pointer;max-width:120px';
+L.forEach(function(o){var op=D.createElement('option');op.value=o[0];op.textContent=o[1];op.style.color='#111';sel.appendChild(op)});
+if(old){old.style.display='none';old.parentNode.insertBefore(sel,old)}else D.body.appendChild(sel);
+var cur='en';try{cur=localStorage.getItem(ST)||(localStorage.getItem('g')==='1'?'gu':((navigator.language||'en').slice(0,2)))}catch(e){}
+if(!L.some(function(o){return o[0]===cur}))cur='en';
+sel.value=cur;sel.onchange=function(){setLang(sel.value)};
+if(cur!=='en'||B.classList.contains('gu'))setLang(cur);
+})();
+</script></body></html>
